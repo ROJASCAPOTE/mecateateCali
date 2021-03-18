@@ -1,151 +1,80 @@
 <?php
 
 class Usuario {
-    private $usuaCedu;
-    private $usuaPrinombre;
-    private $usuaSegNombre;
-    private $usuaPriApellido;
-    private $usuaSegApellido;
-    private $telefono;
-    private $celular;
-    private $direccion;
+
+    private $cedula;
+    private $primerNombre;
+    private $degundoNombre;
+    private $primerApellido;
+    private $segundoApellido;
     private $login;
     private $password;
-    private $email;
-    private $sede;
-    private $fechaCreacion;
-    private $fechaModificacion;
+    private $db;
 
-    function __construct($usuaCedu, $usuaPrinombre, $usuaSegNombre, $usuaPriApellido, $usuaSegApellido, $telefono, $celular, $direccion, $login, $password, $email, $sede, $fechaCreacion) {
-        $this->usuaCedu = $usuaCedu;
-        $this->usuaPrinombre = $usuaPrinombre;
-        $this->usuaSegNombre = $usuaSegNombre;
-        $this->usuaPriApellido = $usuaPriApellido;
-        $this->usuaSegApellido = $usuaSegApellido;
-        $this->telefono = $telefono;
-        $this->celular = $celular;
-        $this->direccion = $direccion;
-        $this->login = $login;
-        $this->password = $password;
-        $this->email = $email;
-        $this->sede = $sede;
-        $this->fechaCreacion = $fechaCreacion;
+    public function __construct() {
+        $this->db = Database::connect();
     }
 
-    public function getUsuaCedu() {
-        return $this->usuaCedu;
+    public function getCedula() {
+        return $this->$this->cedula;
     }
 
-    public function getUsuaPrinombre() {
-        return $this->usuaPrinombre;
+    public function getPrimerNombre() {
+        return $this->$this->primerNombre;
     }
 
-    public function getUsuaSegNombre() {
-        return $this->usuaSegNombre;
+    public function getDegundoNombre() {
+        return $this->$this->degundoNombre;
     }
 
-    public function getUsuaPriApellido() {
-        return $this->usuaPriApellido;
+    public function getPrimerApellido() {
+        return $this->$this->primerApellido;
     }
 
-    public function getUsuaSegApellido() {
-        return $this->usuaSegApellido;
-    }
-
-    public function getTelefono() {
-        return $this->telefono;
-    }
-
-    public function getCelular() {
-        return $this->celular;
-    }
-
-    public function getDireccion() {
-        return $this->direccion;
+    public function getSegundoApellido() {
+        return $this->$this->segundoApellido;
     }
 
     public function getLogin() {
-        return $this->login;
+        return $this->$this->login;
     }
 
     public function getPassword() {
         return $this->password;
     }
 
-    public function getEmail() {
-        return $this->email;
+    public function setCedula($cedula) {
+        $this->cedula = $this->db->real_escape_string($cedula);
     }
 
-    public function getSede() {
-        return $this->sede;
+    public function setPrimerNombre($primerNombre) {
+        $this->primerNombre = $this->db->real_escape_string($primerNombre);
     }
 
-    public function getFechaCreacion() {
-        return $this->fechaCreacion;
+    public function setDegundoNombre($degundoNombre) {
+        $this->degundoNombre = $this->db->real_escape_string($degundoNombre);
     }
 
-    public function getFechaModificacion() {
-        return $this->fechaModificacion;
-    }
-
-    public function setUsuaCedu($usuaCedu) {
-        $this->usuaCedu = $usuaCedu;
-    }
-
-    public function setUsuaPrinombre($usuaPrinombre) {
-        $this->usuaPrinombre = $usuaPrinombre;
-    }
-
-    public function setUsuaSegNombre($usuaSegNombre) {
-        $this->usuaSegNombre = $usuaSegNombre;
-    }
-
-    public function setUsuaPriApellido($usuaPriApellido) {
-        $this->usuaPriApellido = $usuaPriApellido;
-    }
-
-    public function setUsuaSegApellido($usuaSegApellido) {
-        $this->usuaSegApellido = $usuaSegApellido;
-    }
-
-    public function setTelefono($telefono) {
-        $this->telefono = $telefono;
-    }
-
-    public function setCelular($celular) {
-        $this->celular = $celular;
-    }
-
-    public function setDireccion($direccion) {
-        $this->direccion = $direccion;
+    public function setPrimerApellido($primerApellido) {
+        $this->primerApellido = $this->db->real_escape_string($primerApellido);
     }
 
     public function setLogin($login) {
-        $this->login = $login;
+        $this->login = $this->db->real_escape_string($login);
     }
 
     public function setPassword($password) {
-        $this->password = $password;
+        $this->password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 4]);
     }
 
-    public function setEmail($email) {
-        $this->email = $email;
-    }
-
-    public function setSede($sede) {
-        $this->sede = $sede;
-    }
-
-    public function setFechaCreacion($fechaCreacion) {
-        $this->fechaCreacion = $fechaCreacion;
-    }
-
-    public function setFechaModificacion($fechaModificacion) {
-        $this->fechaModificacion = $fechaModificacion;
-    }
-
-    public function __toString() {
-        
+    public function save() {
+        $sql = "INSERT INTO usuarios VALUES('{$this->getCedula()}', '{$this->getPrimerNombre()}');";
+        $save = $this->db->query($query);
+        $result = false;
+        if ($save) {
+            $result = true;
+        }
+        return $result;
     }
 
 }

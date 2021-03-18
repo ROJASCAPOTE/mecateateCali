@@ -8,13 +8,20 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form  action="index.php?controller=usuario&action=save" method="post">
+                    <?php if (isset($_SESSION['register']) && $_SESSION['register']=='complete'): ?>
+                        <strong>Registro completado correctamente</strong>
+                    <?php elseif(isset($_SESSION['register']) && $_SESSION['register']=='failed'): ?>
+                        <strong>Registro fallido</strong>
+                    <?php endif; ?>
+                    <?php Utils::deleteSession('register'); ?>
+
+                    <form  action="<?= base_url ?>usuario/save" method="post">
                         <div class="row">
                             <div class="col-sm-12">
                                 <!-- text input -->
                                 <div class="form-group">
                                     <label for="cedula">Numero Documento</label>
-                                    <input type="cedula" class="form-control" id="cedula" placeholder="Cedula">
+                                    <input type="cedula" class="form-control" name="cedula" id="cedula" placeholder="Cedula">
                                 </div>
                             </div>
                         </div>

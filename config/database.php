@@ -2,6 +2,7 @@
 
 class Database {
 
+    
     public static function connect() {
         $db = new mysqli('localhost', 'root','','mecato_valluno');
         $db->query("SET NAMES 'utf8");

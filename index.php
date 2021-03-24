@@ -2,11 +2,11 @@
 <?php
 session_start();
 require_once 'autoload.php';
-require_once './config/database.php';
-require_once './helpers/utils.php';
-require_once './config/parameter.php';
-require_once './views/template/header.php';
-require_once './views/template/menu.php';
+require_once 'config/database.php';
+require_once 'helpers/utils.php';
+//require_once 'config/parameter.php';
+require_once 'views/template/header.php';
+require_once 'views/template/menu.php';
 
 
 function show_error() {

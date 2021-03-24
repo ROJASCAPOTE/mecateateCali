@@ -2,7 +2,7 @@
 
 class productoTerminadoController {
     public function index(){
-        require_once './views/producto-terminado/destacados.php';
+        require_once 'views/producto-terminado/destacados.php';
     }
 }
 

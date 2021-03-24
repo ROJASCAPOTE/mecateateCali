@@ -8,12 +8,12 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <?php if (isset($_SESSION['register']) && $_SESSION['register'] == 'complete'): ?>
+                <?php if (isset($_SESSION['register']) && $_SESSION['register'] == 'complete'): ?>
                         <strong>Registro completado correctamente</strong>
                     <?php elseif (isset($_SESSION['register']) && $_SESSION['register'] == 'failed'): ?>
                         <strong>Registro fallido</strong>
                     <?php endif; ?>
-                    <?php Utils::deleteSession('register'); ?>
+                    <?php Utils::deleteSession('register'); ?>    
 
                     <form  action="<?= base_url ?>usuario/save" method="post">
                         <div class="row">

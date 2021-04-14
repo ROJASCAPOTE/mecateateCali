@@ -1,45 +1,33 @@
+<?php
+//lamamos a core 
+require_once 'Helpers/Utils.php';
+require_once 'Config/parameter.php';
+require_once 'Views/template/admin/header_admin.php';
+require_once 'Views/template/admin/menu_header_admin.php';
+require_once 'Views/template/admin/menu_sidebar_admin.php';
+?>
+
+<main class="app-content">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-dashboard"></i> sdgdfgdfgdfgd</h1>
+          <p>Start a beautiful journey here</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="#">Blank Page</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">Create a beautiful dashboard</div>
+          </div>
+        </div>
+      </div>
+    </main>
 
 <?php
-session_start();
-require_once 'autoload.php';
-require_once './config/database.php';
-require_once './helpers/utils.php';
-require_once './config/parameter.php';
-require_once './views/template/header.php';
-require_once './views/template/menu.php';
-
-
-function show_error() {
-    $error = new errorController();
-    $error->index();
-}
-
-if (isset($_GET['controller'])) {
-    $nombre_controlador = $_GET['controller'] . 'Controller';
-} elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
-    $nombre_controlador = controller_default;
-} else {
-    show_error();
-    exit();
-}
-
-if (class_exists($nombre_controlador)) {
-    $controlador = new $nombre_controlador();
-
-    if (isset($_GET['action']) && method_exists($controlador, $_GET['action'])) {
-        $action = $_GET['action'];
-        $controlador->$action();
-    } elseif (!isset($_GET['controller']) && !isset($_GET['action'])) {
-        $action_default = action_default;
-        $controlador->$action_default();
-    } else {
-        show_error();
-    }
-} else {
-    show_error();
-}
+require_once 'Views/template/admin/footer_admin.php';
 ?>
-<?php
 
-require_once './views/template/footer.php';
-?>

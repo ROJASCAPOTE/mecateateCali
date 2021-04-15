@@ -2,12 +2,11 @@
 <?php
 session_start();
 require_once 'autoload.php';
-require_once './config/database.php';
-require_once './helpers/utils.php';
-require_once './config/parameter.php';
-require_once './views/template/header.php';
-require_once './views/template/menu.php';
-
+require_once 'config/database.php';
+require_once 'helpers/utils.php';
+require_once 'config/parameter.php';
+require_once 'views/template/header.php';
+require_once 'views/template/menu.php';
 
 function show_error() {
     $error = new errorController();
@@ -39,7 +38,6 @@ if (class_exists($nombre_controlador)) {
     show_error();
 }
 ?>
-<?php
+
 
 require_once './views/template/footer.php';
-?>
